@@ -1,10 +1,12 @@
-const orderSchema = new Schema({
+const mongoose = require("mongoose");
+
+const orderSchema = new mongoose.Schema({
   clientId: {
-    type: Schema.Types.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     ref: "User",
     required: true,
   },
-  transporterId: { type: Schema.Types.ObjectId, ref: "Transporter" },
+  transporterId: { type: mongoose.Schema.Types.ObjectId, ref: "Transporter" },
   dateOrder: { type: Date, default: Date.now },
   statusOrder: {
     type: String,

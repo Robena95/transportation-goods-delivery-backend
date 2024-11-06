@@ -1,4 +1,5 @@
-const Transporter = require("../models/Transporter");
+// const Transporter = require("./models/Transporter");
+const Transporter = require("../models/transporterModel");
 const redis = require("redis");
 
 const client = redis.createClient({

@@ -20,5 +20,16 @@ const getUser = async (req, res, next) => {
     next(error);
   }
 };
+const getUsers = async (req, res, next) => {
+  try {
+    const users = await userService.getUsers();
+    if (!users) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    res.status(200).json(users);
+  } catch (error) {
+    next(error);
+  }
+};
 
-module.exports = { createUser, getUser };
+module.exports = { createUser, getUser, getUsers };

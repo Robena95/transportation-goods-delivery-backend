@@ -3,6 +3,7 @@ const twilio = require("twilio");
 const UserOtp = require("../models/otpModel");
 const crypto = require("crypto");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 const JWT_SECRET = process.env.JWT_SECRET || "default_secret"; // Load JWT secret from environment
 const JWT_EXPIRES_IN = process.env.JWT_EXPIRES_IN || "1h"; // Set token expiration
@@ -20,6 +21,7 @@ const registerUser = async (userData) => {
     password: hashedPassword,
     profileImage: userData.profileImage,
     note: userData.note,
+    role: userData.role,
   });
   return await user.save();
 };

@@ -8,5 +8,8 @@ const createUser = async (userData) => {
 const getUserById = async (userId) => {
   return await User.findById(userId);
 };
+const getUsers = async () => {
+  return await User.find();
+};
 
-module.exports = { createUser, getUserById };
+module.exports = { createUser, getUserById, getUsers };

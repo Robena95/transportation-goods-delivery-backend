@@ -1,3 +1,5 @@
+const mongoose = require("mongoose");
+
 const transporterSchema = new mongoose.Schema(
   {
     firstName: { type: String, required: true },

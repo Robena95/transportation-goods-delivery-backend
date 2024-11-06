@@ -36,6 +36,16 @@ async function getProfile(req, res, next) {
     next(error);
   }
 }
+async function getAllTranspoter(req, res, next) {
+  try {
+    const transporters = await transporterService.getTransporters();
+    if (!transporters)
+      return res.status(404).json({ message: "Transporter not found" });
+    res.status(200).json(transporters);
+  } catch (error) {
+    next(error);
+  }
+}
 
 // Add a rating to a transporter
 async function rateTransporter(req, res, next) {
@@ -49,4 +59,10 @@ async function rateTransporter(req, res, next) {
   }
 }
 
-module.exports = { register, updateAvailability, getProfile, rateTransporter };
+module.exports = {
+  register,
+  updateAvailability,
+  getProfile,
+  rateTransporter,
+  getAllTranspoter,
+};
